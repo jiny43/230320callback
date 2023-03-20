@@ -7,26 +7,61 @@
   <title>Document</title>
 </head>
 <body>
-  <pre>
-   
-  </pre>
+  <input type="text" id="artistNameInput" placeholder="Search Artist Name">
+  <button id="searchButton">Search</button>
+  <pre></pre>
+  </body>
   <script>
-    const xhr = new XMLHttpRequest();
-    const url = 'https://api.odcloud.kr/api/15071046/v1/uddi:abe42915-3cb5-477d-8d53-b7430e5567f0?page=1&perPage=10&serviceKey=9lu3qyxIt6kuUDFrlSZWWSNLtiIRwizRqXkG5S%2B7htoPxXPHepuSXeenvVHskDyRPXOuD73RTzq1fImAFukTow%3D%3D';
-    xhr.open('GET',url);
-    xhr.setRequestHeader('content-type','application/json');
-    xhr.send();
-    xhr.onload = () => {
-      if(xhr.status ===200){
-        document.querySelector('pre').textContent = xhr.response;
-        // const data = JSON.parse(xhr.response); 
-      
-      }else {
-        console.error('Error', xhr.status, xhr.statusText);
-      }
-    };
-    console.log(xhr.response);
 
+// const xhr = new XMLHttpRequest();
+// const url = 'https://api.odcloud.kr/api/15071046/v1/uddi:abe42915-3cb5-477d-8d53-b7430e5567f0?page=1&perPage=10&serviceKey=9lu3qyxIt6kuUDFrlSZWWSNLtiIRwizRqXkG5S%2B7htoPxXPHepuSXeenvVHskDyRPXOuD73RTzq1fImAFukTow%3D%3D';
+// xhr.open('POST', url);
+// xhr.setRequestHeader('content-type', 'application/json');
+// xhr.send();
+
+// xhr.onload = () => {
+//   if (xhr.status === 200) {
+//     const data = JSON.parse(xhr.response);
+//     console.log(data.data);
+//     const searchArtistName = "박효신"; // replace with your search parameter
+//     const filteredData = data.data.filter(d => d.아티스트명 === searchArtistName);
+//     for (i = 0; i < filteredData.length; i++) {
+//       const artistName = filteredData[i].아티스트명;
+//       const albumName = filteredData[i].앨범명;
+//       document.querySelector('pre').textContent += `아티스트: ${artistName}, 앨범명: ${albumName}\n`;
+//     };
+//   };
+// }; 
+  const xhr = new XMLHttpRequest();
+  const url = 'https://api.odcloud.kr/api/15071046/v1/uddi:abe42915-3cb5-477d-8d53-b7430e5567f0?page=1&perPage=10&serviceKey=9lu3qyxIt6kuUDFrlSZWWSNLtiIRwizRqXkG5S%2B7htoPxXPHepuSXeenvVHskDyRPXOuD73RTzq1fImAFukTow%3D%3D';
+  xhr.open('POST', url);
+  xhr.setRequestHeader('content-type', 'application/json');
+  xhr.send();
+
+  xhr.onload = () => {
+    if (xhr.status === 200) {
+      const data = JSON.parse(xhr.response);
+      console.log(data.data);
+
+      const searchButton = document.querySelector('#searchButton');
+      const artistNameInput = document.querySelector('#artistNameInput');
+      const output = document.querySelector('pre');
+
+      searchButton.addEventListener('click', () => {
+        const searchArtistName = artistNameInput.value;
+        const filteredData = data.data.filter(d => d.아티스트명 === searchArtistName);
+        output.textContent = ''; // clear previous search results
+        for (i = 0; i < filteredData.length; i++) {
+          const artistName = filteredData[i].아티스트명;
+          const albumName = filteredData[i].앨범명;
+          output.textContent += `아티스트: ${artistName}, 앨범명: ${albumName}\n`;
+        };
+      });
+    };
+  };
+</script>
+
+    
     
    
   
