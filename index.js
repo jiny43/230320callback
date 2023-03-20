@@ -7,5 +7,5 @@
 
 //package.json 에  "type" : "module" 을 작성하면 commonJS 방식->es방식
 
-import fromModuleObjectBasicData from './module/basic-data.js';
+import fromModuleObjectBasicData from './module';
 console.dir(fromModuleObjectBasicData); //esm
