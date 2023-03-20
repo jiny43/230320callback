@@ -9,4 +9,4 @@ const a = {
 
 // module.exports = a ;    ---> commonjs 방식
 
-export default a; //--> es방식
+export default a; //--> esm방식
