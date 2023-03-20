@@ -5,6 +5,8 @@ let name = "jingjieun";
 
 let year = "2023";
 
-fs.writeFileSync("./"+ name+".txt",year);
+export const f = fs.writeFileSync("./"+ name+".txt",year);
+
 //!파일을 동기방식으로 쓰다.
 //?test.txt 에 name 을 새겨서 만들었다.
+

@@ -1,5 +1,5 @@
 import http from 'http';
-import { title } from 'process';
+import { f } from './file.js';
 console.log(http);
 const server = http.createServer(function(requset,response){
   
@@ -11,6 +11,7 @@ const server = http.createServer(function(requset,response){
   body += "</head>"
   body += "<body>"
   body += "<h1>hello world</h1>"
+  body += "<button>hi</button>"
   body += "</body>"
   body += "</html>"
 
@@ -18,6 +19,10 @@ const server = http.createServer(function(requset,response){
 
 
   response.statusCode = 200;
-  response.setHeader('Content-Type','text/plain');
-  response.end('hello world');
+  response.setHeader('Content-Type','text/html');
+  response.end(body);
+  });
+  server.listen(8080, function(){
+    console.log('서버!');
+    
 });
