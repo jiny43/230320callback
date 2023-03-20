@@ -12,7 +12,6 @@
   <pre></pre>
   </body>
   <script>
-
 // const xhr = new XMLHttpRequest();
 // const url = 'https://api.odcloud.kr/api/15071046/v1/uddi:abe42915-3cb5-477d-8d53-b7430e5567f0?page=1&perPage=10&serviceKey=9lu3qyxIt6kuUDFrlSZWWSNLtiIRwizRqXkG5S%2B7htoPxXPHepuSXeenvVHskDyRPXOuD73RTzq1fImAFukTow%3D%3D';
 // xhr.open('POST', url);
@@ -50,7 +49,7 @@
       searchButton.addEventListener('click', () => {
         const searchArtistName = artistNameInput.value;
         const filteredData = data.data.filter(d => d.아티스트명 === searchArtistName);
-        output.textContent = ''; // clear previous search results
+        // output.textContent = ''; //검색결과 초기화 
         for (i = 0; i < filteredData.length; i++) {
           const artistName = filteredData[i].아티스트명;
           const albumName = filteredData[i].앨범명;
